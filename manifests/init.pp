@@ -44,6 +44,7 @@
 #
 class labsignups {
   include apache
+  include epel
   file { '/srv':
     ensure => directory,
   }
