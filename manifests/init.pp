@@ -44,6 +44,26 @@
 #
 class labsignups {
   include apache
+  file { '/srv':
+    ensure => directory,
+  }
+
+  package { 'ruby':
+    ensure => latest,
+  }
+
+  package { 'rack':
+    ensure   => latest,
+    provider => 'gem',
+    require  => Package['ruby']
+  }
+
+  package { 'sinatra':
+    ensure   => latest,
+    provider => 'gem',
+    require  => Package['ruby']
+  }
+
   vcsrepo { '/srv/labsignups':
     ensure   => present,
     provider => git,
@@ -51,6 +71,7 @@ class labsignups {
     source   => {
       'origin'       => 'https://github.com/ncorrare/labsignups.git'
     },
+    require => File['/srv'],
   }
   
   apache::vhost { 'puppetmaster-idc.cloudapp.net':
