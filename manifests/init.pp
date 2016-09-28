@@ -53,8 +53,12 @@ class labsignups {
     ensure => latest,
   }
 
-  package { 'rack':
+  package { 'git':
     ensure   => latest,
+  }
+
+  package { 'rack':
+    ensure   => '1.6.4',
     provider => 'gem',
     require  => Package['ruby']
   }
