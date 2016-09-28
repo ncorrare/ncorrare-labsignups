@@ -57,6 +57,12 @@ class labsignups {
     ensure   => latest,
   }
 
+  package { 'bundler':
+    ensure   => present,
+    provider => 'gem',
+    require  => Package['ruby']
+  }
+
   package { 'rack':
     ensure   => '1.6.4',
     provider => 'gem',
