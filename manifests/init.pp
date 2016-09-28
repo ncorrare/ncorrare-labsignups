@@ -77,6 +77,7 @@ class labsignups {
   apache::vhost { 'puppetmaster-idc.cloudapp.net':
     port    => '80',
     docroot => '/srv/labsignups/public',
+    require => Vcsrepo['/srv/labsignups'],
   }
   class { 'apache::mod::passenger':
   }
