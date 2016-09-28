@@ -79,6 +79,7 @@ class labsignups {
     ensure   => present,
     provider => git,
     remote   => 'origin',
+    owner    => 'apache',
     source   => {
       'origin'       => 'https://github.com/ncorrare/labsignups.git'
     },
